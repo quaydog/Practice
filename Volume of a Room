@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <cmath>
  
@@ -12,22 +13,60 @@ struct Volume
 int main()
 {
   float l,w,h,v;
+  int rw,riw,rl,ril,rh,rih,lq,wq,hq;
   Volume r;
  
   cout << "Enter the length of the room in feet and inches: ";
   cin >> r.length;
   cin >> r.inchl;
-  cout << "length = " << r.length << "\'" << r.inchl << "\""  << endl;
+ 
+  if((r.inchl / 12) < 1)
+  {
+    cout << "length = " << r.length << "\'" << r.inchl << "\""  << endl;
+  }
+ 
+  else if((r.inchl / 12) >= 1)
+  {
+    lq = ((int)(r.inchl) / 12);
+    rl = r.length + lq;
+    ril = ((int)(r.inchl) % 12);
+    cout << "length = " << rl << "\'" << ril << "\""  << endl;
+  }
  
   cout << "Enter the width of the room in feet and inches: ";
   cin >> r.width;
   cin >> r.inchw;
-  cout << "width = " << r.width << "\'" << r.inchw << "\"" << endl;
+ 
+  if((r.inchw / 12) < 1)
+  {
+    cout << "width = " << r.width << "\'" << r.inchw << "\""  << endl;
+  }
+ 
+  else if((r.inchw / 12) >= 1)
+  {
+    wq = ((int)(r.inchw) / 12);
+    rw = r.width + wq;
+    riw = ((int)(r.inchw) % 12);
+    cout << "width = " << rw << "\'" << riw << "\""  << endl;
+  }
  
   cout << "Enter the height of the room in feet and inches: ";
   cin >> r.height;
   cin >> r.inchh;
-  cout << "height = " << r.height << "\'" << r.inchh << "\"" << endl;
+ 
+  if((r.inchh / 12) < 1)
+  {
+    cout << "height = " << r.height << "\'" << r.inchh << "\""  << endl;
+  }
+ 
+  else if((r.inchh / 12) >= 1)
+  {
+    hq = ((int)(r.inchh) / 12);
+    rh = r.height + hq;
+    rih = ((int)(r.inchh) % 12);
+    cout << "height = " << rh << "\'" << rih << "\""  << endl;
+  }
+ 
  
   l = r.length + (r.inchl / 12);
   w = r.width + (r.inchw / 12);
