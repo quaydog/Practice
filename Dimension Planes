@@ -1,0 +1,34 @@
+#include <iostream>
+using namespace std;
+ 
+#define p1 "Enter the coordinates for p1: "
+#define p2 "Enter the coordinates for p2: "
+#define final "Coordinates of p1 + p2 are: "
+ 
+struct Point
+{
+  int x,y;
+};
+ 
+int main()
+{
+ 
+  Point first;
+ 
+  cout << p1;
+  cin >> first.x;
+  cin >> first.y;
+ 
+  Point second;
+ 
+  cout << p2;
+  cin >> second.x;
+  cin >> second.y;
+ 
+  int tx = first.x + second.x;
+  int ty = first.y + second.y;
+ 
+  cout << final << tx << " " << ty;
+ 
+  return 0;
+}
