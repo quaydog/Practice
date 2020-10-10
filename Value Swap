@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+ 
+void swap(int& xx , int& yy)
+{
+  int c;
+ 
+  c = xx;
+  xx = yy;
+  yy = c;
+ 
+}
+ 
+ 
+int main()
+{
+  int a,b;
+ 
+  cout << "Enter the value of a: ";
+  cin >> a;
+ 
+  cout << "Enter the value of b: ";
+  cin >> b;
+ 
+  swap(a , b);
+ 
+  cout << "The value of a is now " << a << " and b is now " << b << endl;
+ 
+  return 0;
+ 
+}
