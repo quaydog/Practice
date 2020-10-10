@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+ 
+ 
+void Distance(int xx, int yy)
+{
+  cout << "The larger value is " << xx << " meters or " << yy << " centimeters.";
+}
+ 
+void Equal()
+{
+  cout << "Both are equal.";
+}
+ 
+int main()
+{
+  int x,y;
+  float cm, m;
+ 
+  cout << "Input the first value(in cm): ";
+  cin >> x;
+ 
+  cout << "Input the second value(in m): ";
+  cin >> y;
+ 
+  cm = y * 100;
+  m = x * 0.01;
+ 
+  if(m > y)
+  {
+    Distance(m , x);
+  }
+ 
+  else if(m < y)
+  {
+    Distance(y , cm);
+  }
+ 
+  else if(m = y)
+  {
+    Equal();
+  }
+ 
+  return 0;
+}
