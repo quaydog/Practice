@@ -1,0 +1,75 @@
+#include <iostream>
+#include <vector>
+#include <boost/multiprecision/cpp_int.hpp>
+ 
+using namespace std;
+using big_int = boost::multiprecision::cpp_int;
+ 
+bool primprod(big_int ibool)
+{
+  int cnt = 0;
+ 
+  for(int i = 2; cnt < 2 && i * i <= ibool; i++)
+  {
+    while(ibool % i == 0)
+    {
+      ibool /= i;
+      cnt++;
+    }
+  }
+  if(ibool > 1)
+  {
+    cnt++;
+  }
+  return cnt == 2;
+}
+ 
+int main()
+{
+  int term;
+  big_int froterm = 0;
+  big_int nexterm = 1;
+  big_int nterm = 0;
+ 
+  cout << "Enter the term number: ";
+  while(!(cin >> term))
+  {
+    cout << "Please enter an integer: ";
+    cin.clear();
+    cin.ignore(123,'\n');
+  }
+ 
+  vector<big_int> store;
+ 
+  cout << "All the composite numbers in Fibonacci Sequence up to " << term << " term whose sum factors are exactly two prime numbers:" << '\n';
+ 
+  for(int i = 3; i <= term; i++)
+  {
+    nterm = froterm + nexterm;
+    froterm = nexterm;
+    store.push_back(nterm);
+    nexterm = nterm;
+  }
+ 
+ 
+  for(int i = 0; i < store.size(); i++)
+  {
+    for(int d = 2; d <= store[i] / 2; d++)
+    {
+        if(store[i] % d == 0 && primprod(store[i]))
+        {
+            cout << store[i] << " ";
+            break;
+        }
+ 
+        else
+        {
+            continue;
+        }
+    }
+  }
+ 
+ 
+ 
+  return 0;
+}
