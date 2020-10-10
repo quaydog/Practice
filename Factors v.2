@@ -1,0 +1,110 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+ 
+void errorcheck(int hi, int lo)
+{
+  if(hi == lo)
+  {
+  throw "Error: The first input should not be equal to the second";
+  }
+}
+ 
+void swap(int& hi, int& lo)
+{
+  int c;
+  c = hi;
+  hi = lo;
+  lo = c;
+}
+ 
+bool primprod(int ibool)
+{
+  int cnt = 0;
+ 
+  for(int i = 2; cnt < 3 && i * i <= ibool; i++)
+  {
+    while(ibool % i == 0)
+    {
+      ibool /= i;
+      cnt++;
+    }
+  }
+  if(ibool > 1)
+  {
+    cnt++;
+  }
+  return cnt == 3;
+}
+ 
+void displayNum(int lo, int hi)
+{
+  vector<int> num;
+ 
+  cout << "All the numbers between " << lo << " and " << hi << " whose factors are exactly three prime numbers: \n";
+ 
+  for(int i = lo; i <= hi; i++)
+  {
+    if(primprod(i))
+    {
+      num.push_back(i);
+    }
+  }
+ 
+  for(int i = 0; i < num.size(); i ++)
+  {
+    cout << num[i] << '\t';
+  }
+  exit(0);
+}
+ 
+int main()
+{
+  bool iden = true;
+do
+{
+    int hi,lo;
+ 
+  cout << "Enter the first number: ";
+  while(!(cin >> lo))
+  {
+    cout << "Error: Enter an integer: ";
+    cin.clear();
+    cin.ignore(123, '\n');
+  }
+ 
+  cout << "Enter the second number: ";
+  while(!(cin >> hi))
+  {
+    cout << "Error: Enter an integer: ";
+    cin.clear();
+    cin.ignore(123, '\n');
+  }
+ 
+  if(lo > hi)
+  {
+    swap(hi,lo);
+    displayNum(lo,hi);
+  }
+ 
+  if(hi > lo)
+  {
+    displayNum(lo,hi);
+  }
+ 
+  try
+  {
+    errorcheck(hi,lo);
+  }
+ 
+  catch (const char* err1)
+  {
+    cerr << err1 << endl;
+  }
+ 
+}
+while(iden = true);
+ 
+ 
+  return 0;
+}
