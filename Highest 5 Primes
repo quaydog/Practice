@@ -1,0 +1,107 @@
+#include <iostream>
+ 
+using namespace std;
+ 
+int errorcheck(int s, int f)
+{
+  if(f >= s)
+  {
+    throw "Error: The first input should be smaller than the second";
+  }
+  return (f + s);
+}
+ 
+int primenumber(int c)
+{
+  bool prime = true;
+ 
+    for(int i = 2; i <= (c / 2); i++)
+    {
+ 
+      if(c % i == 0)
+      {
+        prime = false;
+ 
+        break;
+      }
+    }
+    return prime;
+}
+ 
+int over(int g)
+{
+  static int count = 0;
+  count++;
+  bool iden = true;
+ 
+  if(count == 5)
+  {
+    exit(0);
+    iden = false;
+  }
+  return iden;
+}
+ 
+int main()
+{
+ 
+bool iden = true;
+ 
+do
+{
+  bool prime;
+  int s,f,t;
+ 
+  cout << "Enter the value of the smaller number: ";
+ 
+  while(!(cin >> f))
+  {
+    cout << "Error: Please input an integer for the smaller number:";
+ 
+    cin.clear();
+ 
+    cin.ignore(123, '\n');
+  }
+ 
+  cout << "Enter the value of the larger number: ";
+ 
+  while(!(cin >> s))
+  {
+    cout << "Error: Please input an integer for the larger number:";
+ 
+    cin.clear();
+ 
+    cin.ignore(123, '\n');
+  }
+ 
+  cout << "Find the 5 largest prime numbers between " << f << " and " << s << '\n';
+ 
+  try
+  {
+    errorcheck(s,f);
+  }
+ 
+  catch (const char* err1)
+  {
+    cerr << err1 << endl;
+  }
+ 
+  for(s; s > f; s--)
+  {
+    prime = primenumber(s);
+ 
+    if(prime == true)
+    {
+      cout << s << '\t';
+ 
+      iden = over(0);
+    }
+  }
+}
+while(iden == true);
+ 
+ 
+ 
+return 0;
+ 
+}
