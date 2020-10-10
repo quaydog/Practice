@@ -1,0 +1,56 @@
+#include <iostream>
+#include <vector>
+#include <boost/multiprecision/cpp_int.hpp>
+ 
+using namespace std;
+using big_int = boost::multiprecision::cpp_int;
+ 
+int main()
+{
+  int term;
+  big_int froterm = 0;
+  big_int nexterm = 1;
+  big_int nterm = 0;
+ 
+ 
+  cout << "Enter the term number: ";
+  while(!(cin >> term))
+  {
+    cout << "Please enter an integer: ";
+    cin.clear();
+    cin.ignore(123,'\n');
+  }
+ 
+  vector<big_int> store;
+ 
+  cout << "All the prime numbers in Fibonacci Sequence up to " << term << " term:" << '\n';
+ 
+  for(int i = 3; i <= term; i++)
+  {
+    nterm = froterm + nexterm;
+    froterm = nexterm;
+ 
+    store.push_back(nterm);
+ 
+    nexterm = nterm;
+  }
+ 
+  for(int i = 0; i < store.size(); i++)
+  {
+      int iden = 0;
+      for(int d = 2; d <= (store[i] / 2); d++)
+      {
+        if(store[i] % d == 0)
+        {
+            iden = 1;
+            break;
+        }
+      }
+      if(iden == 0 && store[i] != 1)
+      {
+          cout << store[i] << " ";
+      }
+  }
+ 
+  return 0;
+}
