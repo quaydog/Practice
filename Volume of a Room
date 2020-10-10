@@ -1,0 +1,40 @@
+#include <iostream>
+#include <cmath>
+ 
+using namespace std;
+ 
+struct Volume
+{
+  float length, width, height, inchl,inchw,inchh;
+};
+ 
+ 
+int main()
+{
+  float l,w,h,v;
+  Volume r;
+ 
+  cout << "Enter the length of the room in feet and inches: ";
+  cin >> r.length;
+  cin >> r.inchl;
+  cout << "length = " << r.length << "\'" << r.inchl << "\""  << endl;
+ 
+  cout << "Enter the width of the room in feet and inches: ";
+  cin >> r.width;
+  cin >> r.inchw;
+  cout << "width = " << r.width << "\'" << r.inchw << "\"" << endl;
+ 
+  cout << "Enter the height of the room in feet and inches: ";
+  cin >> r.height;
+  cin >> r.inchh;
+  cout << "height = " << r.height << "\'" << r.inchh << "\"" << endl;
+ 
+  l = r.length + (r.inchl / 12);
+  w = r.width + (r.inchw / 12);
+  h = r.height + (r.inchh / 12);
+ 
+  v = l * w * h;
+ 
+  cout << "The volume of the room is " << v;
+  return 0;
+}
