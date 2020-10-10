@@ -1,0 +1,31 @@
+#include <iostream>
+#include <conio.h>
+using namespace std;
+ 
+void cnt()
+{
+  static int local = 0;
+  local++;
+ 
+  cout << "I have been called " << local << " times." << '\t';
+}
+ 
+int main()
+{
+  int count = 0;
+ 
+  do
+  {
+    cout << "Press anything to stop or press \" q \" to continue." << endl;
+    count++;
+ 
+    cnt();
+ 
+    cout << "Number of counts stored: " << count << '\n';
+ 
+  }
+  while(getch() == 'q');
+ 
+ 
+  return 0;
+}
