@@ -1,0 +1,78 @@
+
+  if(ibool > 1)
+  {
+    cnt++;
+  }
+  return cnt == 2;
+}
+ 
+void displayNum(int lo, int hi)
+{
+  vector<int> num;
+  cout << "All the numbers between " << lo << " and " << hi << " whose factors are exactly two prime numbers: \n";
+ 
+  for(int i = lo; i <= hi; i++)
+  {
+    if(primprod(i))
+    {
+      num.push_back(i);
+    }
+  }
+ 
+  for(int i = 0; i < num.size(); i ++)
+  {
+    cout << num[i] << '\t';
+  }
+  exit(0);
+}
+ 
+int main()
+{
+  bool iden = true;
+do
+{
+    int hi,lo;
+ 
+  cout << "Enter the first number: ";
+  while(!(cin >> lo))
+  {
+    cout << "Error: Enter an integer: ";
+    cin.clear();
+    cin.ignore(123, '\n');
+  }
+ 
+  cout << "Enter the second number: ";
+  while(!(cin >> hi))
+  {
+    cout << "Error: Enter an integer: ";
+    cin.clear();
+    cin.ignore(123, '\n');
+  }
+ 
+  if(lo > hi)
+  {
+    swap(hi,lo);
+    displayNum(lo,hi);
+  }
+ 
+  if(hi > lo)
+  {
+    displayNum(lo,hi);
+  }
+ 
+  try
+  {
+    errorcheck(hi,lo);
+  }
+ 
+  catch (const char* err1)
+  {
+    cerr << err1 << endl;
+  }
+ 
+}
+while(iden = true);
+ 
+ 
+  return 0;
+}
